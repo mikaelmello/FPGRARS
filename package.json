@@ -1,0 +1,16 @@
+{
+  "name": "fpgrars",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "contributors": [
+    "Leonardo Riether <leonardoalves8217@gmail.com>",
+    "Mikael Mello <git@mikaelmello.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "neon-cli": "^0.7.0"
+  },
+  "scripts": {
+    "install": "neon build"
+  }
+}
