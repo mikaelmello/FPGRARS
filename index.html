@@ -7,23 +7,33 @@
   <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 </head>
 
-<body style="background: white;">
-  <h1>Hello World!</h1>
-  <p>
-    We are using node
-    <script>document.write(process.versions.node)</script>,
-    Chrome
-    <script>document.write(process.versions.chrome)</script>,
-    and Electron
-    <script>document.write(process.versions.electron)</script>.
-  </p>
+<body>
+  <canvas id=c width=320 height=240></canvas>
 </body>
 
 <script>
+  function drawBinary(binaryImage) {
+    const pixels = new Uint8ClampedArray(binaryImage);
+    var canvas = document.getElementById('c');
+    // create ImageData instance
+    var iData = new ImageData(pixels, 320, 240);
+    var ctx = c.getContext("2d");
+    ctx.putImageData(iData, 0, 0);
+  }
+
   document.onclick = function () {
     const fs = require('./native')
+    console.log('-----------------------------');
 
-    console.log(fs.run('/home/mikael/Projects/fpgrars/samples/keymap.s'));
+    console.time("MyTimer");
+    console.timeLog("MyTimer", "Getting mmio data (4 * width * height, rgba)");
+    // Perhaps some code runs to bootstrap a complex app
+    const x = fs.hello();
+    console.timeLog("MyTimer", "Drawing on canvas");
+    drawBinary(x);
+    // ...
+    console.timeLog("MyTimer", "Drawn");
+    console.timeEnd("MyTimer");
   }
 </script>
 
