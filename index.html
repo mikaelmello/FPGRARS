@@ -21,9 +21,14 @@
 
 <script>
   document.onclick = function () {
-    const fs = require('./native')
+    const { State } = require('./native')
 
-    console.log(fs.run('/home/mikael/Projects/fpgrars/samples/keymap.s'));
+    state = new State();
+    console.log(state.run('/home/mikael/Projects/fpgrars/samples/keymap.s'));
+    for (; ;) {
+
+      console.log('kk');
+    }
   }
 </script>
 
