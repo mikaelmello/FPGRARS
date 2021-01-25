@@ -18,7 +18,8 @@ panic = "abort"
 [dependencies]
 lazy_static = "1.4.0"
 rand = "0.7.3"
-
+iced = { git = "https://github.com/hecrj/iced", rev = "8d882d78", features = ["debug"] }
+iced_native = { git = "https://github.com/hecrj/iced", rev = "8d882d78", package = "iced_native" }
 pixel-canvas = "0.2.1"
 glium = "0.26.0"
 
